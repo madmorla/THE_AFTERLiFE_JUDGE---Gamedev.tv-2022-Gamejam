@@ -6,18 +6,24 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Transform targetRightHand;
-    [Range(0.5f, 2)]
-    [SerializeField] private float rightHandSpeed = 1f;
+    public Transform TargetRightHand { get => targetRightHand; }
+
+    [Range(0.5f, 3)]
+    [SerializeField] private float rightHandSpeed = 2f;
 
     private Camera cam;
 
     // Take Object with right hand
-    private Transform rightHandObject;
+    [SerializeField] private PickableObject rightHandObject;
+    public PickableObject RightHandObject { get => rightHandObject; }
+
     private Vector3 rightHandObject_Initialposition;
     private Quaternion rightHandObject_Initialrotation;
-    private bool hasGrabbedInRightHand = false;
-    public bool HasGrabbedInRightHand { get => hasGrabbedInRightHand; }
+    private bool pickingFinished = true;
 
+
+    //----------------------------------
+    // Unity Methods
 
     void Awake()
     {
@@ -32,11 +38,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //----------------------------------
+    // Interaction with IRaycastable objects with mouse
+
     private bool InteractWithObjects()
     {
-        //RaycastHit[] hits = RaycastAllSorted();
-        RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
-        foreach (RaycastHit hit in hits)
+        RaycastHit hit;
+        if (Physics.Raycast(GetMouseRay(), out hit))
         {
             IRaycastable[] raycastables = hit.transform.GetComponents<IRaycastable>();
             foreach (IRaycastable raycastable in raycastables)
@@ -55,61 +63,69 @@ public class PlayerController : MonoBehaviour
         return Camera.main.ScreenPointToRay(Input.mousePosition);
     }
 
-    public void PickupObject(Transform objT)
+
+    //----------------------------------
+    // Pickup Objects Methods
+
+    public void PickupObject(PickableObject pickableObj)
     {
-        StopAllCoroutines();
-        StartCoroutine(PickupObjectCoroutine(objT));
+        if (!rightHandObject && pickingFinished)
+        {
+            StartCoroutine(PickupObjectCoroutine(pickableObj));
+        }
     }
 
-    public void LeaveObject(Transform objT)
+    public void LeaveObject()
     {
-        StopAllCoroutines();
-        StartCoroutine(LeaveObjectCoroutine());
+        if (rightHandObject && pickingFinished)
+        {
+            StartCoroutine(LeaveObjectCoroutine());
+        }
     }
 
-    private IEnumerator PickupObjectCoroutine(Transform objT)
+    private IEnumerator PickupObjectCoroutine(PickableObject pickableObj)
     {
-        print("PickingObject " + objT.name);
+        print("PickingObject " + pickableObj.name);
+        pickingFinished = false;
+        rightHandObject = pickableObj;
 
-        hasGrabbedInRightHand = true;
+        yield return InterpolateObject(rightHandObject.transform,
+                        rightHandObject.transform.position, targetRightHand.position,
+                        rightHandObject.transform.rotation, targetRightHand.rotation);
+        pickingFinished = true;
 
-        rightHandObject = objT;
-        rightHandObject_Initialposition = objT.position;
-        rightHandObject_Initialrotation = objT.rotation;
-
-        yield return InterpolateObject(objT, objT.position, targetRightHand.position, objT.rotation, targetRightHand.rotation);
     }
 
     private IEnumerator LeaveObjectCoroutine()
     {
         print("LeavingObject " + rightHandObject.name);
+        pickingFinished = false;
 
-        yield return InterpolateObject(rightHandObject, rightHandObject.position, rightHandObject_Initialposition, rightHandObject.rotation, rightHandObject_Initialrotation);
-        hasGrabbedInRightHand = false;
+        yield return InterpolateObject(rightHandObject.transform,
+                        rightHandObject.transform.position, rightHandObject.InitialPos,
+                        rightHandObject.transform.rotation, rightHandObject.InitialRot);
+        pickingFinished = true;
         rightHandObject = null;
     }
 
-    IEnumerator InterpolateObject(Transform objT, Vector3 initPos, Vector3 targetPos, Quaternion initRot, Quaternion targetRot)
+    private IEnumerator InterpolateObject(Transform objT, Vector3 initPos, Vector3 targetPos, Quaternion initRot, Quaternion targetRot)
     {
-        bool hasReachedDestination = false;
-
-        // Check if already has reached the destination
-        if (Mathf.Approximately(Vector3.Distance(objT.position, targetPos), 0))
-        {
-            hasReachedDestination = true;
-        }
-
         float t = 0;
-        while (!hasReachedDestination)
+        while (!HasReachedDestination(objT.position, targetPos))
         {
             t += Time.deltaTime * rightHandSpeed;
             objT.position = Vector3.Lerp(initPos, targetPos, t);
             objT.rotation = Quaternion.Lerp(initRot, targetRot, t);
-            if (Mathf.Approximately(Vector3.Distance(objT.position, targetPos), 0))
-            {
-                hasReachedDestination = true;
-            }
+
             yield return null;
         }
     }
+
+    private bool HasReachedDestination(Vector3 currentPos, Vector3 targetPos)
+    {
+        return Mathf.Approximately(Vector3.Distance(currentPos, targetPos), 0);
+    }
+
+    //----------------------------------
+
 }
