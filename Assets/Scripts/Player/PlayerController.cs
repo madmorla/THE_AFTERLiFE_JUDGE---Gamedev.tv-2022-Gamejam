@@ -21,6 +21,9 @@ public class PlayerController : MonoBehaviour
     private Quaternion rightHandObject_Initialrotation;
     private bool pickingFinished = true;
 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] sfx;
+
 
     //----------------------------------
     // Unity Methods
@@ -86,6 +89,9 @@ public class PlayerController : MonoBehaviour
     private IEnumerator PickupObjectCoroutine(PickableObject pickableObj)
     {
         print("PickingObject " + pickableObj.name);
+
+        audioSource.PlayOneShot(sfx[0]);
+
         pickingFinished = false;
         rightHandObject = pickableObj;
 
@@ -99,6 +105,10 @@ public class PlayerController : MonoBehaviour
     private IEnumerator LeaveObjectCoroutine()
     {
         print("LeavingObject " + rightHandObject.name);
+
+        StartCoroutine(play(audioSource, sfx[1], 0.15f));
+
+
         pickingFinished = false;
 
         yield return InterpolateObject(rightHandObject.transform,
@@ -126,6 +136,10 @@ public class PlayerController : MonoBehaviour
         return Mathf.Approximately(Vector3.Distance(currentPos, targetPos), 0);
     }
 
-    //----------------------------------
+    IEnumerator play(AudioSource source, AudioClip clip, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        source.PlayOneShot(clip);
+    }
 
 }
