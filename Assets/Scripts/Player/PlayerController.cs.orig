@@ -67,16 +67,83 @@ public class PlayerController : MonoBehaviour
         return Camera.main.ScreenPointToRay(Input.mousePosition);
     }
 
+<<<<<<< HEAD
+=======
+
+    //----------------------------------
+    // Pickup Objects Methods
+
+    public void PickupObject(PickableObject pickableObj)
+    {
+        if (!rightHandObject && pickingFinished)
+        {
+            StartCoroutine(PickupObjectCoroutine(pickableObj));
+        }
+    }
+
+    public void LeaveObject()
+    {
+        if (rightHandObject && pickingFinished)
+        {
+            StartCoroutine(LeaveObjectCoroutine());
+        }
+    }
+
+    private IEnumerator PickupObjectCoroutine(PickableObject pickableObj)
+    {
+        print("PickingObject " + pickableObj.name);
 
         audioSource.PlayOneShot(sfx[0]);
 
+        pickingFinished = false;
+        rightHandObject = pickableObj;
+
+        yield return InterpolateObject(rightHandObject.transform,
+                        rightHandObject.transform.position, targetRightHand.position,
+                        rightHandObject.transform.rotation, targetRightHand.rotation);
+        pickingFinished = true;
+
+    }
+
+    private IEnumerator LeaveObjectCoroutine()
+    {
+        print("LeavingObject " + rightHandObject.name);
 
         StartCoroutine(play(audioSource, sfx[1], 0.15f));
 
+
+        pickingFinished = false;
+
+        yield return InterpolateObject(rightHandObject.transform,
+                        rightHandObject.transform.position, rightHandObject.InitialPos,
+                        rightHandObject.transform.rotation, rightHandObject.InitialRot);
+        pickingFinished = true;
+        rightHandObject = null;
+    }
+
+    private IEnumerator InterpolateObject(Transform objT, Vector3 initPos, Vector3 targetPos, Quaternion initRot, Quaternion targetRot)
+    {
+        float t = 0;
+        while (!HasReachedDestination(objT.position, targetPos))
+        {
+            t += Time.deltaTime * rightHandSpeed;
+            objT.position = Vector3.Lerp(initPos, targetPos, t);
+            objT.rotation = Quaternion.Lerp(initRot, targetRot, t);
+
+            yield return null;
+        }
+    }
+
+    private bool HasReachedDestination(Vector3 currentPos, Vector3 targetPos)
+    {
+        return Mathf.Approximately(Vector3.Distance(currentPos, targetPos), 0);
+    }
 
     IEnumerator play(AudioSource source, AudioClip clip, float delay)
     {
         yield return new WaitForSeconds(delay);
         source.PlayOneShot(clip);
     }
+
+>>>>>>> 15b62df59f91e8883565163343483818ec90d03b
 }
