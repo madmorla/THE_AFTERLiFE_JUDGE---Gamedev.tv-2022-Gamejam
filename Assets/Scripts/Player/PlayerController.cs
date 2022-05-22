@@ -67,16 +67,4 @@ public class PlayerController : MonoBehaviour
         return Camera.main.ScreenPointToRay(Input.mousePosition);
     }
 
-
-        audioSource.PlayOneShot(sfx[0]);
-
-
-        StartCoroutine(play(audioSource, sfx[1], 0.15f));
-
-
-    IEnumerator play(AudioSource source, AudioClip clip, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        source.PlayOneShot(clip);
-    }
 }

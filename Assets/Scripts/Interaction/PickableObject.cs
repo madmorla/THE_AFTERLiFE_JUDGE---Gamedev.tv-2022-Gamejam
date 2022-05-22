@@ -4,13 +4,25 @@ using UnityEngine;
 
 public class PickableObject : MonoBehaviour, IRaycastable
 {
-    Vector3 initialPos;
-    Quaternion initialRot;
+
+    [Header("SFX")]
+    [SerializeField] private AudioClip sfx_pickupObj;
+    [SerializeField] private float sfx_pickupObj_delay = 0f;
+    [SerializeField] private AudioClip sfx_leaveObj;
+    [SerializeField] private float sfx_leaveObj_delay = 0f;
+
+    private AudioSource audioSource;
+    private Vector3 initialPos;
+    private Quaternion initialRot;
+    private bool pickingFinished = true;
 
     public Vector3 InitialPos { get => initialPos; }
     public Quaternion InitialRot { get => initialRot; }
 
-    private bool pickingFinished = true;
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     public bool HandleRaycast(PlayerController callingController)
     {
@@ -69,6 +81,13 @@ public class PickableObject : MonoBehaviour, IRaycastable
     private IEnumerator PickupObjectCoroutine(PickableObject pickableObj, PlayerController callingController)
     {
         print("PickingObject " + pickableObj.name);
+
+        if (sfx_pickupObj)
+        {
+            audioSource.clip = sfx_pickupObj;
+            audioSource.PlayDelayed(sfx_pickupObj_delay);
+        }
+
         pickingFinished = false;
         callingController.RightHandObject = pickableObj;
 
@@ -85,6 +104,13 @@ public class PickableObject : MonoBehaviour, IRaycastable
     private IEnumerator LeaveObjectCoroutine(PlayerController callingController)
     {
         print("LeavingObject " + callingController.RightHandObject.name);
+
+        if (sfx_pickupObj)
+        {
+            audioSource.clip = sfx_leaveObj;
+            audioSource.PlayDelayed(sfx_leaveObj_delay);
+        }
+
         pickingFinished = false;
 
         Transform initT = callingController.RightHandObject.transform;
@@ -116,5 +142,4 @@ public class PickableObject : MonoBehaviour, IRaycastable
         return Mathf.Approximately(Vector3.Distance(currentPos, targetPos), 0);
     }
 
-    //----------------------------------
 }
