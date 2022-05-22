@@ -13,11 +13,20 @@ MonoBehaviour:
   m_Name: TestPerson
   m_EditorClassIdentifier: 
   image: {fileID: 0}
-  name: Yomumma
-  age: 420
+  fullname: Johnny Tray Hotbody
+  age: 84
   description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
     tempor incididunt ut labore et dolore magna aliqua. Risus ultricies tristique
     nulla aliquet enim tortor at.
   howDied: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
     tempor incididunt ut labore et dolore magna aliqua. Ullamcorper sit amet risus
     nullam eget felis eget nunc.
+  righteousActs:
+  - Fed an Armadillo
+  - Gave a homeless person a knife
+  sinfulActs:
+  - Snorted WD-40
+  - 'Stole a car while listening to "Katy Perry: Roar"'
+  - Ate a slice of pizza with vegetables
+  familyMembers:
+  - 
