@@ -918,9 +918,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d66a5f8698576b43b209e4b766a995a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sfx_pickupObj: {fileID: 0}
+  sfx_pickupObj: {fileID: 8300000, guid: d4f1cea5082d3bc4fbfb075c385b4299, type: 3}
   sfx_pickupObj_delay: 0
-  sfx_leaveObj: {fileID: 0}
+  sfx_leaveObj: {fileID: 8300000, guid: c399a65decd3b9048a147077a850177e, type: 3}
   sfx_leaveObj_delay: 0.15
 --- !u!82 &1118883116420149086
 AudioSource:

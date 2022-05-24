@@ -19,10 +19,6 @@ public class PlayerController : MonoBehaviour
     public PickableObject RightHandObject { get => rightHandObject; set => rightHandObject = value; }
 
 
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip[] sfx;
-
-
     //----------------------------------
     // Unity Methods
 

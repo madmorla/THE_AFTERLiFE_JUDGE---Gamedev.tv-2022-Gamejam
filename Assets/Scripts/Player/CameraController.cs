@@ -8,11 +8,11 @@ public class CameraController : MonoBehaviour
     [Header("Refs")]
     [SerializeField] private GameObject cam;
     [SerializeField][Range(0, 1000)] private float sensitivity;
-    [SerializeField][Range(-10f, 30f)] private float[] rotxClamp = { 5,5f, 22f };
+    [SerializeField][Range(-10f, 60f)] private float[] rotxClamp = { 5, 5f, 22f };
     [SerializeField] private float rotyClamp = 70f;
 
     private Vector2 mouseIn;
-    private Vector3 rot = new Vector3(0f,0f,0f);
+    private Vector3 rot = new Vector3(0f, 0f, 0f);
 
     private float Xsensitivity;
     private float Ysensitivity;
@@ -20,7 +20,7 @@ public class CameraController : MonoBehaviour
     private void Start()
     {
         Mouse.ToggleCursor(false);
-        
+
         cam.transform.localRotation = Quaternion.Euler(0, 0, 0);
         transform.localRotation = Quaternion.Euler(0, 0, 0);
         Xsensitivity = sensitivity;
@@ -42,7 +42,7 @@ public class CameraController : MonoBehaviour
         rot.x -= mouseIn.y;
         rot.y += mouseIn.x;
         rot.x = Mathf.Clamp(rot.x, rotxClamp[0], rotxClamp[1]);
-        rot.y = Mathf.Clamp(rot.y, -rotyClamp+1, rotyClamp-1);
+        rot.y = Mathf.Clamp(rot.y, -rotyClamp + 1, rotyClamp - 1);
 
         //Lean effect, it makes it so your z changes depending on your y val
         rot.z = rot.y * 0.15f;
