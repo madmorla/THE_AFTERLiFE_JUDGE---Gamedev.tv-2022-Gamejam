@@ -4892,7 +4892,7 @@ GameObject:
   - component: {fileID: 19876282}
   - component: {fileID: 19967334}
   m_Layer: 0
-  m_Name: FireBallBlue
+  m_Name: FireBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

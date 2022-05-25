@@ -17,6 +17,5 @@ public class SoulSpawner : MonoBehaviour
     public void SpawnSoul_Button()
 	{
         SpawnSoul();
-
     }
 }
