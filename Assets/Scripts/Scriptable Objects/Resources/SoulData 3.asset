@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: SoulData 3
   m_EditorClassIdentifier: 
   image: {fileID: 0}
-  fullname: 3
-  diedAtAge: 0
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Risus ultricies tristique
-    nulla aliquet enim tortor at.
+  fullname: 'Mel mumbleson '
+  diedAtAge: 69
+  description: 'Mel mumbleson was the best student in his biology class. Having little
+    regard for other subjects, he became a man child, partying all day and night.
+    He may or may not have died crushed by a 3000 pound woman when they were snuggling. '
   righteousActs:
-  - Fed an Armadillo
-  - Gave a homeless person a knife
+  - Loved women very much
+  - Liked to cuddle
   sinfulActs:
-  - Snorted WD-40
-  - 'Stole a car while listening to "Katy Perry: Roar"'
-  - Ate a slice of pizza with vegetables
-  familyMembers: []
+  - Loved too much, who knows how many kids he has
+  - Loved to make people drunk
+  familyMembers:
+  - Who knows?

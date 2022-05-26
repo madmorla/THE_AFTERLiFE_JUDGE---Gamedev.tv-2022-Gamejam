@@ -13,16 +13,13 @@ MonoBehaviour:
   m_Name: SoulData 4
   m_EditorClassIdentifier: 
   image: {fileID: 0}
-  fullname: 4
+  fullname: 
   diedAtAge: 0
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Risus ultricies tristique
-    nulla aliquet enim tortor at.
+  description: 
   righteousActs:
-  - Fed an Armadillo
-  - Gave a homeless person a knife
+  - 
+  - 
   sinfulActs:
-  - Snorted WD-40
-  - 'Stole a car while listening to "Katy Perry: Roar"'
-  - Ate a slice of pizza with vegetables
+  - 
+  - 
   familyMembers: []

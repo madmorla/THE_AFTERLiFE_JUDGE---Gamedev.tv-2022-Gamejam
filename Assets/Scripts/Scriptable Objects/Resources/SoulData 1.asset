@@ -13,16 +13,17 @@ MonoBehaviour:
   m_Name: SoulData 1
   m_EditorClassIdentifier: 
   image: {fileID: 0}
-  fullname: 1
-  diedAtAge: 0
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Risus ultricies tristique
-    nulla aliquet enim tortor at.
+  fullname: Martin Cuger
+  diedAtAge: 29
+  description: "Living in the shadow of his brother, Martin took his place in war
+    and died. He won\u2019t be missed by his family."
   righteousActs:
-  - Fed an Armadillo
-  - Gave a homeless person a knife
+  - Died in action to save his brother
+  - 'Gave money to aids research '
   sinfulActs:
-  - Snorted WD-40
-  - 'Stole a car while listening to "Katy Perry: Roar"'
-  - Ate a slice of pizza with vegetables
-  familyMembers: []
+  - Killed men in war
+  - Lied about identity
+  familyMembers:
+  - 'Father: John Cuger'
+  - 'Mother: Elisabthe Cuger'
+  - John jr. Cuger

@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: SoulData 0
   m_EditorClassIdentifier: 
   image: {fileID: 0}
-  fullname: 0
-  diedAtAge: 0
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Risus ultricies tristique
-    nulla aliquet enim tortor at.
+  fullname: Louis dumpiatelli
+  diedAtAge: 100
+  description: Louis was a young man who decided he was too cool for school, and
+    he never studied. He mercilessly killed an old lady and then joined the mafia
+    to commit more crimes. He was shot by the police.
   righteousActs:
-  - Fed an Armadillo
-  - Gave a homeless person a knife
+  - Gave money to charities
+  - Gave a homeless man a house
   sinfulActs:
-  - Snorted WD-40
-  - 'Stole a car while listening to "Katy Perry: Roar"'
-  - Ate a slice of pizza with vegetables
-  familyMembers: []
+  - Ran over 30 people with a lawn mower
+  - shot a guy in the head
+  familyMembers:
+  - 'Wife: Marianna dumpiatelli '

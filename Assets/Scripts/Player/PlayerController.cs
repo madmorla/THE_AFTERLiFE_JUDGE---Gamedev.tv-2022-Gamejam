@@ -1,6 +1,5 @@
+using Conveniences;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -25,6 +24,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         cam = Camera.main;
+        Mouse.ToggleCursor(false);
     }
 
     void Update()

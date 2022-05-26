@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: SoulData 2
   m_EditorClassIdentifier: 
   image: {fileID: 0}
-  fullname: 2
-  diedAtAge: 0
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Risus ultricies tristique
-    nulla aliquet enim tortor at.
+  fullname: Big doofus
+  diedAtAge: 65
+  description: Big Doofs tried to live his life as a normal human. Doofus was successful.
+    Doofus died of a heart attack after putting socks with his sandals.
   righteousActs:
-  - Fed an Armadillo
-  - Gave a homeless person a knife
+  - Baked a cake
+  - 'Never put socks and sandals '
   sinfulActs:
-  - Snorted WD-40
-  - 'Stole a car while listening to "Katy Perry: Roar"'
-  - Ate a slice of pizza with vegetables
-  familyMembers: []
+  - His name
+  - He put his underwear over his pants
+  familyMembers:
+  - 'Father: Left to get milk'
+  - "Mother: We don\u2019t even know who she is, his father slept with so many women."

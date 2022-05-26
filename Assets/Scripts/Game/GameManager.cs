@@ -6,15 +6,21 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private SoulSpawner soulSpawner;
     [SerializeField] private Scroll scroll;
+
+	[Header("Hell Settings")]
 	[SerializeField] private AudioSource hellPortalAS;
+	[SerializeField] private Color hellSoulColor = Color.red;
+	[SerializeField] private Color hellInteriorSoulColor = Color.red;
+
+	[Header("Heaven Settings")]
 	[SerializeField] private AudioSource heavenPortalAS;
-	
+	[SerializeField] private Color heavenSoulColor = Color.blue;
+	[SerializeField] private Color heavenInteriorSoulColor = Color.blue;
+
 	[Header("Options")]
 	[SerializeField] private bool createRandomQueue = true;
 
     [SerializeField] private SoulDataSO[] soulDataList;
-
-
 
 	private Queue<SoulDataSO> soulsDataQueue;
 
@@ -119,6 +125,7 @@ public class GameManager : MonoBehaviour
 	{
 		if(hellPortalAS.isPlaying)	{	hellPortalAS.Stop();  }
 		currentSoul.MoveTowards(heavenPortalAS.transform);
+		currentSoul.SetSoulColor(heavenSoulColor, heavenInteriorSoulColor);
 		heavenPortalAS.Play();
 	}
 
@@ -126,6 +133,7 @@ public class GameManager : MonoBehaviour
 	{
 		if(heavenPortalAS.isPlaying){	heavenPortalAS.Stop();	}
 		currentSoul.MoveTowards(hellPortalAS.transform);
+		currentSoul.SetSoulColor(hellSoulColor, hellInteriorSoulColor);
 		hellPortalAS.Play();
 	}
 

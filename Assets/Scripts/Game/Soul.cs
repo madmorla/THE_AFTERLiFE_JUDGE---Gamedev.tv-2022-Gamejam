@@ -33,17 +33,6 @@ public class Soul : MonoBehaviour
 		SetSoulColor(soulColor, interiorSoulColor);
 	}
 
-	private void SetSoulColor(Color color, Color interiorColor)
-	{
-		soulBallMat.SetColor("_Fresnel_Color", color);
-		soulBallMat.SetColor("_InteriorColor", interiorColor);
-		foreach(Material mat in particleSystemsMats)
-		{
-			mat.SetColor("_TintColor", color);
-		}
-		pointLight.color = color;
-	}
-
 	private void Update()
 	{
 		if(isMoving && target)
@@ -87,6 +76,16 @@ public class Soul : MonoBehaviour
 			particleSystemsMats.Add(rend.material);
 		}
 		pointLight = GetComponentInChildren<Light>();
+	}
+	public void SetSoulColor(Color color, Color interiorColor)
+	{
+		soulBallMat.SetColor("_Fresnel_Color", color);
+		soulBallMat.SetColor("_InteriorColor", interiorColor);
+		foreach(Material mat in particleSystemsMats)
+		{
+			mat.SetColor("_TintColor", color);
+		}
+		pointLight.color = color;
 	}
 
 	public void MoveTowards(Transform target)
