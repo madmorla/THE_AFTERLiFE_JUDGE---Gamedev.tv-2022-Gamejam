@@ -44,3 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 423d3520ae7d50148b8ec8d6ab09551d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soulSpawner: {fileID: 0}
+  scroll: {fileID: 0}
+  hellPortalAS: {fileID: 0}
+  heavenPortalAS: {fileID: 0}
+  createRandomQueue: 1
+  soulDataList:
+  - {fileID: 11400000, guid: c6bd1b3f33ebaf344a75dce7336b4c2a, type: 2}
+  - {fileID: 11400000, guid: 77954dab66ae5ed4299669723267e1ba, type: 2}
+  - {fileID: 11400000, guid: c3016feb37266814c85e17ddd50b8897, type: 2}
+  - {fileID: 11400000, guid: 40ad809f210f7da488e72592819fefda, type: 2}
+  - {fileID: 11400000, guid: 313cfdd8eb87c3449ae0fe4074a80075, type: 2}

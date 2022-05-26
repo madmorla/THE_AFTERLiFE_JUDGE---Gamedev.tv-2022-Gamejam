@@ -7,11 +7,13 @@ public class SoulDataSO : ScriptableObject
 	[Header("Info")]
 	public Image image;
 	public string fullname;
-	public int age;
+	public int diedAtAge;
+	[Space]
 	[TextArea] public string description;
-
+	[Space]
 	public string[] righteousActs;
+	[Space]
 	public string[] sinfulActs;
-
+	[Space]
 	public string[] familyMembers;
 }

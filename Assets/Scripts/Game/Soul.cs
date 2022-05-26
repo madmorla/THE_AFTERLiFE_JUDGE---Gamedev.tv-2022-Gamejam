@@ -1,22 +1,24 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Soul : MonoBehaviour
 {
 	[Header("Movement")]
-	public float speed = 1.0f;
+	[SerializeField] public float speed = 1.0f;
 
 	[Header("Colors")]
-	[SerializeField] Color soulColor = Color.blue;
-	[SerializeField] Color interiorSoulColor = Color.blue;
+	[SerializeField] private Color soulColor = Color.blue;
+	[SerializeField] private Color interiorSoulColor = Color.blue;
 
 	private bool isMoving = false;
 	private Transform target;
 
-	Material soulBallMat;
-	List<Material> particleSystemsMats;
-	Light pointLight;
+	private Material soulBallMat;
+	private List<Material> particleSystemsMats;
+	private Light pointLight;
+
+	public event Action onReachDestination;
 
 	//------------------------------------
 	// Unity methods
@@ -55,6 +57,8 @@ public class Soul : MonoBehaviour
 			{
 				target = null;
 				isMoving = false;
+
+				onReachDestination?.Invoke();
 			}
 		}
 	}

@@ -80,7 +80,7 @@ public class PickableObject : MonoBehaviour, IRaycastable
 
     private IEnumerator PickupObjectCoroutine(PickableObject pickableObj, PlayerController callingController)
     {
-        print("PickingObject " + pickableObj.name);
+        //print("PickingObject " + pickableObj.name);
 
         if (sfx_pickupObj)
         {
@@ -103,7 +103,7 @@ public class PickableObject : MonoBehaviour, IRaycastable
 
     private IEnumerator LeaveObjectCoroutine(PlayerController callingController)
     {
-        print("LeavingObject " + callingController.RightHandObject.name);
+        //print("LeavingObject " + callingController.RightHandObject.name);
 
         if (sfx_pickupObj)
         {

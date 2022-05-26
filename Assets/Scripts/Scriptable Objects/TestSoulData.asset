@@ -14,13 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 0}
   fullname: Johnny Tray Hotbody
-  age: 84
+  diedAtAge: 0
   description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
     tempor incididunt ut labore et dolore magna aliqua. Risus ultricies tristique
     nulla aliquet enim tortor at.
-  howDied: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ullamcorper sit amet risus
-    nullam eget felis eget nunc.
   righteousActs:
   - Fed an Armadillo
   - Gave a homeless person a knife
@@ -28,5 +25,4 @@ MonoBehaviour:
   - Snorted WD-40
   - 'Stole a car while listening to "Katy Perry: Roar"'
   - Ate a slice of pizza with vegetables
-  familyMembers:
-  - 
+  familyMembers: []
