@@ -868,6 +868,7 @@ GameObject:
   - component: {fileID: 1118883116420149075}
   - component: {fileID: 1118883116420149084}
   - component: {fileID: 1118883116420149085}
+  - component: {fileID: 780543657339308678}
   - component: {fileID: 1118883116420149086}
   m_Layer: 0
   m_Name: Scroll
@@ -922,6 +923,20 @@ MonoBehaviour:
   sfx_pickupObj_delay: 0
   sfx_leaveObj: {fileID: 8300000, guid: c399a65decd3b9048a147077a850177e, type: 3}
   sfx_leaveObj_delay: 0.15
+--- !u!114 &780543657339308678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1118883116420149087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db1ada3df8054104dbfae6ec9dca71d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soulData: {fileID: 11400000, guid: c6bd1b3f33ebaf344a75dce7336b4c2a, type: 2}
+  x: {fileID: 0}
 --- !u!82 &1118883116420149086
 AudioSource:
   m_ObjectHideFlags: 0

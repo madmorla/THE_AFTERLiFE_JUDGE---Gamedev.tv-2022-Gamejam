@@ -16,7 +16,7 @@ public class Soul : MonoBehaviour
 
 	Material soulBallMat;
 	List<Material> particleSystemsMats;
-	Light light;
+	Light pointLight;
 
 	//------------------------------------
 	// Unity methods
@@ -39,7 +39,7 @@ public class Soul : MonoBehaviour
 		{
 			mat.SetColor("_TintColor", color);
 		}
-		light.color = color;
+		pointLight.color = color;
 	}
 
 	private void Update()
@@ -82,7 +82,7 @@ public class Soul : MonoBehaviour
 			ParticleSystemRenderer rend = ps.GetComponent<ParticleSystemRenderer>();
 			particleSystemsMats.Add(rend.material);
 		}
-		light = GetComponentInChildren<Light>();
+		pointLight = GetComponentInChildren<Light>();
 	}
 
 	public void MoveTowards(Transform target)
