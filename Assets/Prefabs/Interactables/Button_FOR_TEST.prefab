@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1982426360692142047}
   - component: {fileID: 1982426360692142044}
   - component: {fileID: 1982426360692142017}
+  - component: {fileID: 8183994126485745402}
   m_Layer: 0
   m_Name: Button_FOR_TEST
   m_TagString: Untagged
@@ -160,6 +161,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8183994126485745402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982426360692142045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f57f05366f847934e87b5254cd71e517, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _outline: {fileID: 1358217158211836783}
 --- !u!1 &1982426361811053661
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,6 +266,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1982426362004326699}
+  - component: {fileID: 1358217158211836783}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -276,6 +291,24 @@ Transform:
   m_Father: {fileID: 1982426360692142046}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1358217158211836783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982426362004326696}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 1, g: 0.81999564, b: 0.2216981, a: 1}
+  outlineWidth: 5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &1982426362591100180
 GameObject:
   m_ObjectHideFlags: 0

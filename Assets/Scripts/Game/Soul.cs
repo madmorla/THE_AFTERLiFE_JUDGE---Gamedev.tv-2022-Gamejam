@@ -11,6 +11,10 @@ public class Soul : MonoBehaviour
 	[SerializeField] private Color soulColor = Color.blue;
 	[SerializeField] private Color interiorSoulColor = Color.blue;
 
+	[Header("VFX Effect")]
+	[SerializeField] private GameObject onDieEffectPrefab;
+	[SerializeField] private Vector3 vfxPosOffset;
+
 	private bool isMoving = false;
 	private Transform target;
 
@@ -19,13 +23,14 @@ public class Soul : MonoBehaviour
 	private Light pointLight;
 
 	public event Action onReachDestination;
-
+	
 	//------------------------------------
 	// Unity methods
 
 	private void Awake()
 	{
 		GetAllColorChangeReferences();
+		onReachDestination += OnDieEffect;
 	}
 
 	private void Start()
@@ -77,6 +82,18 @@ public class Soul : MonoBehaviour
 		}
 		pointLight = GetComponentInChildren<Light>();
 	}
+
+	private void OnDieEffect()
+	{
+		if(onDieEffectPrefab)
+		{
+			GameObject dieEffect = Instantiate(onDieEffectPrefab, this.transform.position + vfxPosOffset, Quaternion.identity);
+			ParticleSystem ps = dieEffect.GetComponent<ParticleSystem>();
+			ParticleSystem.MainModule main = ps.main;
+			main.startColor = soulColor;
+		}
+	}
+
 	public void SetSoulColor(Color color, Color interiorColor)
 	{
 		soulBallMat.SetColor("_Fresnel_Color", color);
@@ -93,4 +110,6 @@ public class Soul : MonoBehaviour
 		this.target = target;
 		isMoving = true;
 	}
+
+	
 }

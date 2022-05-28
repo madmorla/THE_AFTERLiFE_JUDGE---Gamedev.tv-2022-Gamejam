@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,15 +8,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private SoulSpawner soulSpawner;
     [SerializeField] private Scroll scroll;
 
-	[Header("Hell Settings")]
-	[SerializeField] private AudioSource hellPortalAS;
-	[SerializeField] private Color hellSoulColor = Color.red;
-	[SerializeField] private Color hellInteriorSoulColor = Color.red;
-
-	[Header("Heaven Settings")]
-	[SerializeField] private AudioSource heavenPortalAS;
-	[SerializeField] private Color heavenSoulColor = Color.blue;
-	[SerializeField] private Color heavenInteriorSoulColor = Color.blue;
+	[Header("Portals")]
+	[SerializeField] private Portal hellPortal;
+	[SerializeField] private Portal heavenPortal;
 
 	[Header("Options")]
 	[SerializeField] private bool createRandomQueue = true;
@@ -25,6 +20,8 @@ public class GameManager : MonoBehaviour
 	private Queue<SoulDataSO> soulsDataQueue;
 
     private Soul currentSoul;
+
+	private event Action onSoulPassPortal;
 
 	//------------------------------------
 	// Methods
@@ -103,7 +100,7 @@ public class GameManager : MonoBehaviour
 
 		while(indicesList.Count > 0)
 		{
-            int randomIndex = Random.Range(0, indicesList.Count);
+            int randomIndex = UnityEngine.Random.Range(0, indicesList.Count);
 			soulsDataQueue.Enqueue(soulDataList[indicesList[randomIndex]]);
             indicesList.RemoveAt(randomIndex);
         }
@@ -123,18 +120,20 @@ public class GameManager : MonoBehaviour
 
 	public void SoulMoveToHeavenPortal()
 	{
-		if(hellPortalAS.isPlaying)	{	hellPortalAS.Stop();  }
-		currentSoul.MoveTowards(heavenPortalAS.transform);
-		currentSoul.SetSoulColor(heavenSoulColor, heavenInteriorSoulColor);
-		heavenPortalAS.Play();
+		hellPortal.StopIfSoundPlaying();
+		currentSoul.MoveTowards(heavenPortal.transform);
+		currentSoul.SetSoulColor(heavenPortal.SoulColor, heavenPortal.InteriorSoulColor);
+		onSoulPassPortal += heavenPortal.PlaySound;
+		onSoulPassPortal += heavenPortal.PlayPortalVFX;
 	}
 
 	public void SoulMoveToHellPortal()
 	{
-		if(heavenPortalAS.isPlaying){	heavenPortalAS.Stop();	}
-		currentSoul.MoveTowards(hellPortalAS.transform);
-		currentSoul.SetSoulColor(hellSoulColor, hellInteriorSoulColor);
-		hellPortalAS.Play();
+		heavenPortal.StopIfSoundPlaying();
+		currentSoul.MoveTowards(hellPortal.transform);
+		currentSoul.SetSoulColor(hellPortal.SoulColor, hellPortal.InteriorSoulColor);
+		onSoulPassPortal += hellPortal.PlaySound;
+		onSoulPassPortal += hellPortal.PlayPortalVFX;
 	}
 
 	//---------------------------
@@ -143,7 +142,10 @@ public class GameManager : MonoBehaviour
 	// Event triggered when soul pass through the portal
 	public void SoulPassThroughThePortal()
 	{
-		Debug.Log("onReachDestination");
+		//Debug.Log("onReachDestination");
+		onSoulPassPortal?.Invoke();
+		onSoulPassPortal = null;
+
 		Destroy(currentSoul.gameObject);
 		currentSoul = null;
 
