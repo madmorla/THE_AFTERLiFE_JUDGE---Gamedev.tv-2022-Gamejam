@@ -22,41 +22,18 @@ public class GameManager : MonoBehaviour
     private Soul currentSoul;
 
 	private event Action onSoulPassPortal;
+	public event Action onGameFinished;
 
-	//------------------------------------
-	// Methods
-
-	// Gameflow
-
-	//--------
-	//Loop until finish list of souls
-
-	// 1- Spawn a 'random' soul
-	//  1.1- Set SoulData in scroll
-	//  1.2- Spawn animation soul???
-
-	// 2- Push a button
-	// NOTE: Player has to read the scroll to push buttons????
-
-	// 3- Soul Move to portal
-	//  3.1- Change color depending portal choosed
-	//  3.2- Moving like a ghost??? make some curves or something like that?? change the shader??
-
-	// 4- Destroy the soul and spawn new one (Maybe pooling?)
-	//--------
-
-	// 5- Finish the game with the last soul replace you??
-
-	private void Start()
-	{
-		NewGame();
-	}
+	private bool isGameStarted = false;
 
 	//---------------------------
 	// Methods
 
 	public void NewGame()
     {
+		//TODO: Leave scroll in his position if taken
+		isGameStarted = true;
+
 		if(currentSoul)
 		{
             Destroy(currentSoul.gameObject);
@@ -120,6 +97,8 @@ public class GameManager : MonoBehaviour
 
 	public void SoulMoveToHeavenPortal()
 	{
+		if(!currentSoul) return;
+
 		hellPortal.StopIfSoundPlaying();
 		currentSoul.MoveTowards(heavenPortal.transform);
 		currentSoul.SetSoulColor(heavenPortal.SoulColor, heavenPortal.InteriorSoulColor);
@@ -129,6 +108,8 @@ public class GameManager : MonoBehaviour
 
 	public void SoulMoveToHellPortal()
 	{
+		if(!currentSoul) return;
+
 		heavenPortal.StopIfSoundPlaying();
 		currentSoul.MoveTowards(hellPortal.transform);
 		currentSoul.SetSoulColor(hellPortal.SoulColor, hellPortal.InteriorSoulColor);
@@ -152,6 +133,8 @@ public class GameManager : MonoBehaviour
 		if(!SpawnNextSoul())
 		{
 			Debug.Log("FINISHED");
+			isGameStarted = false;
+			onGameFinished?.Invoke();
 		}
 	}
 

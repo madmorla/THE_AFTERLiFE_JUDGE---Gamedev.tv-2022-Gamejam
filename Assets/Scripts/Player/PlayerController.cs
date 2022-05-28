@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         cam = Camera.main;
-        Mouse.ToggleCursor(false);
+        //Mouse.ToggleCursor(false);
     }
 
     void Update()
