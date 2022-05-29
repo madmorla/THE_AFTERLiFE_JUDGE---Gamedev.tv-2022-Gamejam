@@ -68,7 +68,7 @@ MonoBehaviour:
   anim: {fileID: 9164616632872703692}
   animTriggerWord: buttonPressed
   rend: {fileID: 1146129592954453581}
-  light: {fileID: 7765497392939948369}
+  emissionLight: {fileID: 7765497392939948369}
   onPressedButton:
     m_PersistentCalls:
       m_Calls: []

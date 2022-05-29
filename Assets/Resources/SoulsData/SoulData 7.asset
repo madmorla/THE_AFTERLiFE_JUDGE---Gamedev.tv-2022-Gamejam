@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9a93ad716f8aea48bd84fbe0732dabf, type: 3}
+  m_Name: SoulData 7
+  m_EditorClassIdentifier: 
+  image: {fileID: 21300000, guid: 4f155ed1c2c0b9c4b8ea2a561ed55557, type: 3}
+  fullname: Sasha Petrov
+  diedAtAge: 44
+  description: "Sasha Petrov was a substance abuser, domestic abuser and every other
+    type of abuser, she was wise only when consuming drugs, that\u2019s why she took
+    drugs during the job, when the manager found out he fired her, ironically, she
+    commited suicide"
+  righteousActs:
+  - Worked for the anti-suicide line
+  - Helped many people to overcome their fears
+  sinfulActs:
+  - Killed her boyfriend when she left her pregnant
+  - harmed the kid in any way, morally and physically
+  familyMembers:
+  - 'Father: Igor Petrov '
+  - 'Mother: Anoushka Petrov'
+  - 'Son: Konstantin Petrov'

@@ -5,8 +5,15 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private SoulSpawner soulSpawner;
-    [SerializeField] private Scroll scroll;
+	[Header("Player")]
+	[SerializeField] private PlayerController playerController;
+	public PlayerController PlayerController { get => playerController; }
+
+	[Header("Souls")]
+	[SerializeField] private SoulSpawner soulSpawner;
+
+	[Header("Interactables")]
+	[SerializeField] private Scroll scroll;
 
 	[Header("Portals")]
 	[SerializeField] private Portal hellPortal;
@@ -25,20 +32,17 @@ public class GameManager : MonoBehaviour
 	public event Action onGameFinished;
 
 	private bool isGameStarted = false;
+	public bool IsGameStarted { get => isGameStarted; }
 
 	//---------------------------
 	// Methods
 
 	public void NewGame()
-    {
+	{
 		//TODO: Leave scroll in his position if taken
 		isGameStarted = true;
 
-		if(currentSoul)
-		{
-            Destroy(currentSoul.gameObject);
-            currentSoul = null;
-		}
+		ResetGame();
 
 		if(createRandomQueue)
 		{
@@ -50,6 +54,22 @@ public class GameManager : MonoBehaviour
 		}
 
 		SpawnNextSoul();
+	}
+
+	private void ResetGame()
+	{
+		if(currentSoul)
+		{
+			Destroy(currentSoul.gameObject);
+			currentSoul = null;
+		}
+
+		if(playerController.RightHandObject)
+		{
+			PickableObject pickObjScroll = scroll.GetComponent<PickableObject>();
+			pickObjScroll.LeaveObject(playerController);
+		}
+		
 	}
 
 	private void CreateSequenceSoulQueue()
@@ -100,7 +120,7 @@ public class GameManager : MonoBehaviour
 		if(!currentSoul) return;
 
 		hellPortal.StopIfSoundPlaying();
-		currentSoul.MoveTowards(heavenPortal.transform);
+		currentSoul.MoveTowards(heavenPortal.EntryPoint);
 		currentSoul.SetSoulColor(heavenPortal.SoulColor, heavenPortal.InteriorSoulColor);
 		onSoulPassPortal += heavenPortal.PlaySound;
 		onSoulPassPortal += heavenPortal.PlayPortalVFX;
@@ -111,7 +131,7 @@ public class GameManager : MonoBehaviour
 		if(!currentSoul) return;
 
 		heavenPortal.StopIfSoundPlaying();
-		currentSoul.MoveTowards(hellPortal.transform);
+		currentSoul.MoveTowards(hellPortal.EntryPoint);
 		currentSoul.SetSoulColor(hellPortal.SoulColor, hellPortal.InteriorSoulColor);
 		onSoulPassPortal += hellPortal.PlaySound;
 		onSoulPassPortal += hellPortal.PlayPortalVFX;

@@ -11,12 +11,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float rightHandSpeed = 2f;
     public float RightHandSpeed { get => rightHandSpeed; }
 
-    private Camera cam;
 
     // Take Object with right hand
     [SerializeField] private PickableObject rightHandObject;
     public PickableObject RightHandObject { get => rightHandObject; set => rightHandObject = value; }
 
+	private bool canInteract = true;
+	public bool CanInteract { get => canInteract; set => canInteract = value; }
+
+    private Camera cam;
 
     //----------------------------------
     // Unity Methods
@@ -40,6 +43,8 @@ public class PlayerController : MonoBehaviour
 
     private bool InteractWithObjects()
     {
+		if(!canInteract) { return false; }
+
         // Cast a ray from the mouse in camera direction and get the first hit
         RaycastHit hit;
         if (Physics.Raycast(GetMouseRay(), out hit))

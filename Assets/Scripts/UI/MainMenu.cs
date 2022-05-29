@@ -12,6 +12,8 @@ public class MainMenu : MonoBehaviour
 
 	[Header("UI Elements")]
 	[SerializeField] private UnityEngine.UI.Button playButton;
+	[SerializeField] private GameObject crosshair;
+
 
 	[Header("Music")]
 	[SerializeField] private AudioSource mainMenuTrack;
@@ -20,6 +22,7 @@ public class MainMenu : MonoBehaviour
 	Animator anim;
 
 	private bool isMenuShowed = true;
+	private bool isAnimationEnds = true;
 
 	//---------------------------
 	// Unity Methods
@@ -37,8 +40,10 @@ public class MainMenu : MonoBehaviour
 
 	private void Update()
 	{
-		if(Input.GetKeyDown(KeyCode.Escape))
+		if(Input.GetKeyDown(KeyCode.Q) && gameManager.IsGameStarted && isAnimationEnds)
 		{
+			EnableInteraction(false);
+
 			if(isMenuShowed) 
 			{
 				HideMenu();
@@ -54,6 +59,8 @@ public class MainMenu : MonoBehaviour
 	// Methods
 	public void StartGame()
 	{
+		isAnimationEnds = false;
+
 		HideMenu();
 		gameManager.NewGame();
 	}
@@ -79,6 +86,8 @@ public class MainMenu : MonoBehaviour
 		mainMenuTrack.Play();
 
 		isMenuShowed = !isMenuShowed;
+
+		crosshair.SetActive(false);
 		Conveniences.Mouse.ToggleCursor(true);
 		mainCamera.SetActive(false);
 		menuCamera.SetActive(true);
@@ -91,10 +100,30 @@ public class MainMenu : MonoBehaviour
 		gameplayTrack.Play();
 
 		isMenuShowed = !isMenuShowed;
+
+		crosshair.SetActive(true);
 		Conveniences.Mouse.ToggleCursor(false);
 		mainCamera.SetActive(true);
 		menuCamera.SetActive(false);
 		anim.SetTrigger("toggleMenu");
 	}
 
+	//---------------------------
+	// Animation Events
+
+	void OnShowMenuAnimationEnd()
+	{
+		EnableInteraction(true);
+	}
+
+	void OnHideMenuAnimationEnd()
+	{
+		EnableInteraction(true);
+	}
+
+	private void EnableInteraction(bool value)
+	{
+		gameManager.PlayerController.CanInteract = value;
+		isAnimationEnds = value;
+	}
 }

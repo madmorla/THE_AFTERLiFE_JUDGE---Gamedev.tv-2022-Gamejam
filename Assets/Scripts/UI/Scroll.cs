@@ -9,6 +9,7 @@ public class Scroll : MonoBehaviour
     [SerializeField] private SoulDataSO soulData;
 
     [SerializeField] private GameObject listItemUIPrefab;
+    [SerializeField] private GameObject dataChangesPrefab;
 
     [Header("UI Fields")]
     [SerializeField] private Image portrait;
@@ -23,12 +24,15 @@ public class Scroll : MonoBehaviour
 	{
         this.soulData = soulDataSO;
 
+        portrait.sprite = soulData.image;
         fullName.text = soulData.fullname;
         diedAtAge.text = soulData.diedAtAge.ToString();
         description.text = soulData.description;
         SetRighteousActsList(soulData.righteousActs);
         SetSinfulActsList(soulData.sinfulActs);
         SetFamilyMembersList(soulData.familyMembers);
+
+        InstantiateParticles();
     }
 
     public void SetRighteousActsList(IEnumerable<string> itemList)
@@ -64,5 +68,12 @@ public class Scroll : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+    }
+
+    private void InstantiateParticles()
+	{
+        Transform particlesT = Instantiate(dataChangesPrefab, this.transform).transform;
+        particlesT.localPosition = Vector3.zero;
+        Destroy(particlesT.gameObject, 1);
     }
 }

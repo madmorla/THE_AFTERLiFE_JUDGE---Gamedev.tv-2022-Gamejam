@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoulDataSO : ScriptableObject
 {
 	[Header("Info")]
-	public Image image;
+	public Sprite image;
 	public string fullname;
 	public int diedAtAge;
 	[Space]

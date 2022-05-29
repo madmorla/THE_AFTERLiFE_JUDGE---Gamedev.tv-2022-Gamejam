@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9a93ad716f8aea48bd84fbe0732dabf, type: 3}
+  m_Name: SoulData 3
+  m_EditorClassIdentifier: 
+  image: {fileID: 21300000, guid: 8efeaf761b05bbf4baf91d94731815b7, type: 3}
+  fullname: 'Mel mumbleson '
+  diedAtAge: 69
+  description: 'Mel mumbleson was the best student in his biology class. Having little
+    regard for other subjects, he became a man child, partying all day and night.
+    He may or may not have died crushed by a 3000 pound woman when they were snuggling. '
+  righteousActs:
+  - Loved women very much
+  - Liked to cuddle
+  sinfulActs:
+  - Loved too much, who knows how many kids he has
+  - Loved to make people drunk
+  familyMembers:
+  - Who knows?

@@ -3,7 +3,32 @@ guid: b128c3a875b638b499921bfd661d77ee
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bulb
+    second: {fileID: 2100000, guid: 4904ca62bd655c84582c9893bebef306, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lamp
+    second: {fileID: 2100000, guid: 4a1dc67e76cb9a345971193f5329de9b, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Metal009_2K_Color
+    second: {fileID: 2800000, guid: 0f8a899dd8e453f4ea2f62a2699df1eb, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Metal009_2K_NormalGL
+    second: {fileID: 2800000, guid: 1b4e9709eee78cf4c932551ef78d1813, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Metal009_2K_Roughness
+    second: {fileID: 2800000, guid: 27a31b2f8c28ad644827f3a5b856c423, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

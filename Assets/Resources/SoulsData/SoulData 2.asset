@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9a93ad716f8aea48bd84fbe0732dabf, type: 3}
+  m_Name: SoulData 2
+  m_EditorClassIdentifier: 
+  image: {fileID: 21300000, guid: 4a7323f2a968273459c1e330bbe89de5, type: 3}
+  fullname: Big doofus
+  diedAtAge: 65
+  description: Big Doofs tried to live his life as a normal human. Doofus was successful.
+    Doofus died of a heart attack after putting socks with his sandals.
+  righteousActs:
+  - Baked a cake
+  - 'Never put socks and sandals '
+  sinfulActs:
+  - His name
+  - He put his underwear over his pants
+  familyMembers:
+  - 'Father: Left to get milk'
+  - "Mother: We don\u2019t even know who she is, his father slept with so many women."

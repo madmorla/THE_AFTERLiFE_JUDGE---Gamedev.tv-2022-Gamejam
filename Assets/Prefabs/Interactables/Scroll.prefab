@@ -91,7 +91,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 253586763535216222}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.000013039}
+  m_LocalPosition: {x: 0, y: 0, z: 0.00000093181}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -108,7 +108,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -186}
+  m_AnchoredPosition: {x: 50, y: -170}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &4616237939123631635
@@ -896,6 +896,7 @@ MonoBehaviour:
   soulData: {fileID: 11400000, guid: c6bd1b3f33ebaf344a75dce7336b4c2a, type: 2}
   listItemUIPrefab: {fileID: 7261418563126368071, guid: a053010639e0c4245aef46479e6464c7,
     type: 3}
+  dataChangesPrefab: {fileID: 199160, guid: 8f7f0f527641315428fb1fb2a9aa1dd5, type: 3}
   portrait: {fileID: 8374644165085896866}
   fullName: {fileID: 1118883116855809434}
   diedAtAge: {fileID: 1118883116094359231}
@@ -1900,7 +1901,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 50, y: -50}
-  m_SizeDelta: {x: 100, y: 120}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &7090937038642776274
 CanvasRenderer:

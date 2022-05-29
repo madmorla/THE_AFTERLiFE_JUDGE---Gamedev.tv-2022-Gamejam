@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9a93ad716f8aea48bd84fbe0732dabf, type: 3}
+  m_Name: SoulData 0
+  m_EditorClassIdentifier: 
+  image: {fileID: 21300000, guid: c8cdd11310829b7489f85a66729a9ae6, type: 3}
+  fullname: Louis Dumpiatelli
+  diedAtAge: 100
+  description: Louis was a young man who decided he was too cool for school, and
+    he never studied. He mercilessly killed an old lady and then joined the mafia
+    to commit more crimes. He was shot by the police.
+  righteousActs:
+  - Gave money to charities
+  - Gave a homeless man a house
+  sinfulActs:
+  - Ran over 30 people with a lawn mower
+  - Shot a guy in the head
+  familyMembers:
+  - 'Wife: Marianna Dumpiatelli '

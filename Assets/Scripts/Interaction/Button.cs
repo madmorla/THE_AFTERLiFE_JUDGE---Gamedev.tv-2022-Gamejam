@@ -15,7 +15,7 @@ public class Button : MonoBehaviour, IRaycastable
 
     [Header("Emission color and light")]
     [SerializeField] private Renderer rend;
-    [SerializeField] private Light light;
+    [SerializeField] private Light emissionLight;
     private Material mat;
     private Color emissionColor;
 
@@ -33,7 +33,7 @@ public class Button : MonoBehaviour, IRaycastable
 		{
             mat = rend.material;
             emissionColor = mat.GetColor("_EmissionColor");
-            light.color = emissionColor;
+            emissionLight.color = emissionColor;
         }
     }
 
@@ -79,13 +79,12 @@ public class Button : MonoBehaviour, IRaycastable
             mat.SetColor("_EmissionColor", Color.black);
         }
 
-        light.gameObject.SetActive(enabled);
+        emissionLight.gameObject.SetActive(enabled);
     }
 
     // Animation Event if added
     public void OnAnimationEnd()
 	{
-        print("Animation end");
         SetEmission(false);
     }
 
