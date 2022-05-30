@@ -15,15 +15,15 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: 549012c74115ec344aa85008821a983e, type: 3}
   fullname: 'Anastasia Volkov '
   diedAtAge: 29
-  description: Anastasia Volkov had a strange childhood, all the old persons told
+  description: Anastasia Volkov had a strange childhood, all the elderly people told
     her that she was ugly so she started hating them more and more, she got stabbed
     with a knife by accident when babysitting a 6 year old kid.
   righteousActs:
   - Loved children
-  - babysits for free
+  - Babysits for free
   sinfulActs:
   - Hates and harms old people
   - Killed her grandparents
   familyMembers:
   - 'Father: Boris Volkov'
-  - Sventlana Volkov
+  - 'Mother: Sventlana Volkov'

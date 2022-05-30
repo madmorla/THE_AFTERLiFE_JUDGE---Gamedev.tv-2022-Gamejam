@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: 832d631e23992b145af608c6ed69b2cf, type: 3}
   fullname: Diego Garcia jr.
-  diedAtAge: 32
+  diedAtAge: 45
   description: "Diego Garc\xEDa jr was kind of a dumb person, he didn\u2019t think
-    much, had problems with his parents so he ran away, got a house, married a women,
+    much, had problems with his parents so he ran away, got a house, married a woman,
     loved her a lot, he couldn\u2019t have babies so he became depressed, commited
     suicide."
   righteousActs:
   - Gave a knife and cooked meat to a homeless person
   - Loved his wife
   sinfulActs:
-  - That homeless person ends up killing two guys
+  - That homeless person ended up killing two guys
   - 'Promoted slavery '
   familyMembers:
   - 'Mother: Sofia Garcia'

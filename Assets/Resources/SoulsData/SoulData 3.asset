@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: SoulData 3
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: 8efeaf761b05bbf4baf91d94731815b7, type: 3}
-  fullname: 'Mel mumbleson '
+  fullname: 'Gel Gumbleson '
   diedAtAge: 69
-  description: 'Mel mumbleson was the best student in his biology class. Having little
+  description: 'Gel Gumbleson was the best student in his biology class. Having little
     regard for other subjects, he became a man child, partying all day and night.
     He may or may not have died crushed by a 3000 pound woman when they were snuggling. '
   righteousActs:

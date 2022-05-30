@@ -15,11 +15,11 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: 65b1bed3e7df0e442ae9262a7f09c401, type: 3}
   fullname: Noah Williams
   diedAtAge: 60
-  description: Noah Williams was the mayor of a small city in america, he always
-    helped the city but hated to be hated, used propaganda for material reasons reasons,
-    got sniped by a hitman that was hired by a mafia.
+  description: Noah Williams was the mayor of a small city in America, he always
+    helped the city but hated to be criticized, used propaganda for material reasons
+    reasons, got sniped by a hitman that was hired by the Russian mafia.
   righteousActs:
-  - Made a small city from america great again
+  - Made a small city from America great again
   - Fought against racism
   sinfulActs:
   - Has stolen loads of money from poor people

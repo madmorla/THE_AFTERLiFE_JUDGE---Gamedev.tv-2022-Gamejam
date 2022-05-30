@@ -11,15 +11,18 @@ public class MainMenu : MonoBehaviour
 	[SerializeField] private GameObject menuCamera;
 
 	[Header("UI Elements")]
-	[SerializeField] private UnityEngine.UI.Button playButton;
+	public UnityEngine.UI.Button playButton;
+	public UnityEngine.UI.Button creditsButton;
 	[SerializeField] private GameObject crosshair;
-
 
 	[Header("Music")]
 	[SerializeField] private AudioSource mainMenuTrack;
 	[SerializeField] private AudioSource gameplayTrack;
 
-	Animator anim;
+	[SerializeField] private Animator leftPanelAnim;
+	[SerializeField] private Animator rightPanelAnim;
+	[SerializeField] private Animator creditsPanelAnim;
+	[SerializeField] private Animator storyPanelAnim;
 
 	private bool isMenuShowed = true;
 	private bool isAnimationEnds = true;
@@ -29,7 +32,6 @@ public class MainMenu : MonoBehaviour
 
 	private void Awake()
 	{
-		anim = GetComponent<Animator>();
 		gameManager.onGameFinished += FinishGame;
 	}
 
@@ -57,28 +59,34 @@ public class MainMenu : MonoBehaviour
 
 	//---------------------------
 	// Methods
+
 	public void StartGame()
 	{
 		isAnimationEnds = false;
 
-		HideMenu();
+		HideMenuToStory();
+		ShowStoryPanel(true);
+	}
+
+	public void BeginJudge()
+	{
+		ShowStoryPanel(false);
+		StartGameActions();
 		gameManager.NewGame();
 	}
+
 	private void FinishGame()
 	{
 		ShowMenu();
 
-		// Show credits in scroll??
-		// or in the right side of menu??  <-- This easier
-
-		// show credits
+		//Show Finish Panel and score?
+		ToggleCredits(); // then Finish
 	}
 
 	public void ExitGame()
 	{
 		Application.Quit();
 	}
-
 
 	private void ShowMenu()
 	{
@@ -91,10 +99,16 @@ public class MainMenu : MonoBehaviour
 		Conveniences.Mouse.ToggleCursor(true);
 		mainCamera.SetActive(false);
 		menuCamera.SetActive(true);
-		anim.SetTrigger("toggleMenu");
+		leftPanelAnim.SetBool("hide", false);
 	}
 
 	private void HideMenu()
+	{
+		StartGameActions();
+		HideMenuToStory();
+	}
+
+	private void StartGameActions()
 	{
 		mainMenuTrack.Stop();
 		gameplayTrack.Play();
@@ -105,18 +119,45 @@ public class MainMenu : MonoBehaviour
 		Conveniences.Mouse.ToggleCursor(false);
 		mainCamera.SetActive(true);
 		menuCamera.SetActive(false);
-		anim.SetTrigger("toggleMenu");
+	}
+
+	private void HideMenuToStory()
+	{
+		leftPanelAnim.SetBool("hide", true);
+		if(rightPanelAnim.GetBool("show"))
+		{
+			rightPanelAnim.SetBool("show", false);
+			creditsPanelAnim.SetBool("move", false);
+		}
+	}
+
+	private void ShowStoryPanel(bool value)
+	{
+		storyPanelAnim.SetBool("show", value);
+	}
+
+	//---------------------------
+	// Button Events
+
+	public void ToggleCredits()
+	{
+		creditsButton.interactable = false;
+		if(rightPanelAnim.GetBool("show"))
+		{
+			rightPanelAnim.SetBool("show", false);
+			creditsPanelAnim.SetBool("move", false);
+		}
+		else
+		{
+			rightPanelAnim.SetBool("show", true);
+			creditsPanelAnim.SetBool("move", true);
+		}
 	}
 
 	//---------------------------
 	// Animation Events
 
-	void OnShowMenuAnimationEnd()
-	{
-		EnableInteraction(true);
-	}
-
-	void OnHideMenuAnimationEnd()
+	public void OnHideMenuAnimationEnd()
 	{
 		EnableInteraction(true);
 	}
