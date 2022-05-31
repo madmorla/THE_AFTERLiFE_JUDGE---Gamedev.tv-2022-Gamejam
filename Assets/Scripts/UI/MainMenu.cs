@@ -11,7 +11,8 @@ public class MainMenu : MonoBehaviour
 	[SerializeField] private GameObject menuCamera;
 
 	[Header("UI Elements")]
-	public UnityEngine.UI.Button playButton;
+	public UnityEngine.UI.Button startGameButton;
+	public UnityEngine.UI.Button resumeGameButton;
 	public UnityEngine.UI.Button creditsButton;
 	[SerializeField] private GameObject crosshair;
 
@@ -64,6 +65,9 @@ public class MainMenu : MonoBehaviour
 	{
 		isAnimationEnds = false;
 
+		startGameButton.gameObject.SetActive(false);
+		resumeGameButton.gameObject.SetActive(true);
+
 		HideMenuToStory();
 		ShowStoryPanel(true);
 	}
@@ -77,6 +81,9 @@ public class MainMenu : MonoBehaviour
 
 	private void FinishGame()
 	{
+		startGameButton.gameObject.SetActive(true);
+		resumeGameButton.gameObject.SetActive(false);
+
 		ShowMenu();
 
 		//Show Finish Panel and score?
@@ -152,6 +159,11 @@ public class MainMenu : MonoBehaviour
 			rightPanelAnim.SetBool("show", true);
 			creditsPanelAnim.SetBool("move", true);
 		}
+	}
+
+	public void ResumeGame()
+	{
+		HideMenu();
 	}
 
 	//---------------------------

@@ -119,6 +119,11 @@ public class GameManager : MonoBehaviour
 	{
 		if(!currentSoul) return;
 
+		if(playerController.RightHandObject)
+		{
+			playerController.RightHandObject.LeaveObject(playerController);
+		}
+
 		hellPortal.StopIfSoundPlaying();
 		currentSoul.MoveTowards(heavenPortal.EntryPoint);
 		currentSoul.SetSoulColor(heavenPortal.SoulColor, heavenPortal.InteriorSoulColor);
@@ -129,6 +134,11 @@ public class GameManager : MonoBehaviour
 	public void SoulMoveToHellPortal()
 	{
 		if(!currentSoul) return;
+
+		if(playerController.RightHandObject)
+		{
+			playerController.RightHandObject.LeaveObject(playerController);
+		}
 
 		heavenPortal.StopIfSoundPlaying();
 		currentSoul.MoveTowards(hellPortal.EntryPoint);
