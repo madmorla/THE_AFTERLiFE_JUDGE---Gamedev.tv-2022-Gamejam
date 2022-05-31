@@ -15,7 +15,7 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: 4a7323f2a968273459c1e330bbe89de5, type: 3}
   fullname: Big Doofus
   diedAtAge: 65
-  description: Big Doofs tried to live his life as a normal human. Doofus was successful.
+  description: Big Doofus tried to live his life as a normal human. Doofus was successful.
     Doofus died of a heart attack after putting socks with his sandals.
   righteousActs:
   - Baked a cake

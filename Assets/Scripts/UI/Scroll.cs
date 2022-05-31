@@ -21,7 +21,7 @@ public class Scroll : MonoBehaviour
     [SerializeField] private RectTransform familyMembersList;
 
     public void SetSoulData(SoulDataSO soulDataSO)
-	{
+    {
         this.soulData = soulDataSO;
 
         portrait.sprite = soulData.image;
@@ -36,7 +36,7 @@ public class Scroll : MonoBehaviour
     }
 
     public void SetRighteousActsList(IEnumerable<string> itemList)
-	{
+    {
         DeleteItemListUI(righteousActsList);
         SetItemList(itemList, righteousActsList);
     }
@@ -54,24 +54,24 @@ public class Scroll : MonoBehaviour
     }
 
     private void SetItemList(IEnumerable<string> itemList, RectTransform container)
-	{
-		foreach(string item in itemList)
-		{
+    {
+        foreach (string item in itemList)
+        {
             GameObject itemObj = Instantiate(listItemUIPrefab, container);
             itemObj.GetComponent<ScrollItemList>().SetItemText(item);
-		}
-	}
+        }
+    }
 
     private void DeleteItemListUI(RectTransform container)
-	{
-        foreach(Transform child in container)
+    {
+        foreach (Transform child in container)
         {
             Destroy(child.gameObject);
         }
     }
 
     private void InstantiateParticles()
-	{
+    {
         Transform particlesT = Instantiate(dataChangesPrefab, this.transform).transform;
         particlesT.localPosition = Vector3.zero;
         Destroy(particlesT.gameObject, 1);
